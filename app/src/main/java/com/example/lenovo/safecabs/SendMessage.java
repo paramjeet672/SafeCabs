@@ -60,7 +60,9 @@ public class SendMessage extends AppCompatActivity {
         String source = source1.getText().toString();
         EditText dest1 = (EditText) findViewById(R.id.destination);
         String dest = dest1.getText().toString();
-        String text2 = "Travelling From: " + source + "\nTravelling To: " + dest + "\nCab Details: " + text1;
+        EditText mess1 = (EditText) findViewById(R.id.message1);
+        String mess = mess1.getText().toString();
+        String text2 = "Travelling From: " + source + "\r\nTravelling To: " + dest + "\r\nMessage: " + mess +  "\r\nCab Details: " + text1;
         message = new MSG91("155516AQ8nmQ5Lr8ab593929d7", true);
         String guardianNumber = guardian.getText().toString();
         message.setRoute("4");
@@ -68,5 +70,9 @@ public class SendMessage extends AppCompatActivity {
         message.to(guardianNumber);
         String status = message.send();
         Toast.makeText(SendMessage.this, "Message Sent", Toast.LENGTH_LONG).show();
+        TextView textView = (TextView) findViewById(R.id.scanresult);
+        textView.setText(text2);
+        Intent intent1 = new Intent(SendMessage.this, MainActivity.class);
+        startActivity(intent1);
     }
 }
