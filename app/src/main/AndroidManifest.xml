@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.lenovo.safecabs" >
-
+    <uses-permission android:name="android.permission.SEND_SMS"/>
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -37,6 +37,10 @@
         <activity
             android:name=".SignUp"
             android:label="SafeCabs" >
+        </activity>
+        <activity
+            android:name=".SendMessage"
+            android:label="@string/title_activity_send_message" >
         </activity>
     </application>
 

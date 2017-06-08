@@ -40,7 +40,7 @@ import com.google.android.gms.vision.barcode.Barcode;
 
 public class MainActivity extends AppCompatActivity {
     Button scanbtn;
-    TextView result;
+
     public static final int REQUEST_CODE = 100;
     public static final int PERMISSION_REQUEST = 200;
     @Override
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         scanbtn = (Button) findViewById(R.id.scanbtn);
-        result = (TextView) findViewById(R.id.result);
+
         if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.CAMERA}, PERMISSION_REQUEST);
         }
@@ -66,12 +66,10 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode == REQUEST_CODE && resultCode == RESULT_OK){
             if(data != null){
                 final Barcode barcode = data.getParcelableExtra("barcode");
-                result.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        result.setText(barcode.displayValue);
-                    }
-                });
+                String text1 = barcode.displayValue;
+                Intent i = new Intent(MainActivity.this, SendMessage.class);
+                i.putExtra("result",text1);
+                startActivity(i);
             }
         }
     }

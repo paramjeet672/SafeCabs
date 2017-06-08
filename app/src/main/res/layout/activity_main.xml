@@ -24,6 +24,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="72dp" />
 
+
+
     <Button
         android:id="@+id/scanbtn"
         android:layout_width="wrap_content"
@@ -39,21 +41,6 @@
         android:layout_centerHorizontal="true"
         android:background="#ff020202" />
 
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:padding="5dp"
-        android:gravity="center_horizontal"
-        android:textColor="#ff020202"
-
-        android:layout_below="@+id/scanbtn"
-        android:layout_marginTop="39dp"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView" />
 
 
 </RelativeLayout>
