@@ -1,5 +1,6 @@
 package com.example.lenovo.safecabs;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -11,8 +12,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
-public class SignUp extends ActionBarActivity {
+public class SignUp extends Activity {
 
+    DatabaseHelper helper = new DatabaseHelper(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +46,13 @@ public class SignUp extends ActionBarActivity {
     public void doSignUp(View v){
         EditText editText = (EditText) findViewById(R.id.signUp_email);
         EditText editText1 = (EditText) findViewById(R.id.signUp_pswd);
+        EditText editText2 = (EditText) findViewById(R.id.signUp_confirmpswd);
+        EditText editText3 = (EditText) findViewById(R.id.signUp_name);
         String email = editText.getText().toString();
         String pass = editText1.getText().toString();
-        if(TextUtils.isEmpty(email) || TextUtils.isEmpty(pass) ) {
+        String name = editText3.getText().toString();
+        String cpass = editText2.getText().toString();
+        if(TextUtils.isEmpty(email) || TextUtils.isEmpty(pass) || TextUtils.isEmpty(name) || TextUtils.isEmpty(cpass) ) {
 
             if (TextUtils.isEmpty(email)) {
                 editText.setError("Please Enter Email");
@@ -54,13 +60,30 @@ public class SignUp extends ActionBarActivity {
             if (TextUtils.isEmpty(pass)) {
                 editText1.setError("Please Enter Password");
             }
+            if(TextUtils.isEmpty(name)){
+                editText3.setError("Please Enter Name");
+            }
+            if (TextUtils.isEmpty(cpass)){
+                editText2.setError("Please Confirm Password");
+            }
         }
         else {
-            Toast.makeText(SignUp.this, "Successfully Registered", Toast.LENGTH_LONG).show();
-            Intent i = new Intent(this, MainActivity.class);
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(i);
+            if (TextUtils.equals(pass, cpass)) {
+                Contact c = new Contact();
+                c.setName(name);
+                c.setEmail(email);
+                c.setPass(pass);
+                helper.insertContact(c);
+
+                Toast.makeText(SignUp.this, "Successfully Registered", Toast.LENGTH_LONG).show();
+                Intent i = new Intent(this, MainActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
+            }
+            else{
+                Toast.makeText(SignUp.this, "Passwords do not match", Toast.LENGTH_LONG).show();
+            }
         }
 
     }

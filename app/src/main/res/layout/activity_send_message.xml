@@ -57,7 +57,7 @@
     <EditText
         android:id="@+id/message1"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="40dp"
 
         android:ems="10"
         android:hint="Message"
@@ -82,11 +82,29 @@
         android:textColor="#fff4fa3e"
         android:background="#000000"
         />
+    <EditText
+        android:id="@+id/location"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+
+        android:ems="10"
+
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="#fff4fa3e"
+        android:textColorHint="#fff4fa3e"
+        android:background="#000000"
+        android:layout_below="@+id/scanresult"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp" />
+
+
     <Button
         android:id="@+id/send"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/scanresult"
+        android:layout_below="@+id/location"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:onClick="sendMessage"

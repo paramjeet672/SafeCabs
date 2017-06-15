@@ -8,9 +8,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class Login extends ActionBarActivity {
+    DatabaseHelper helper = new DatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +56,17 @@ public class Login extends ActionBarActivity {
                 editText1.setError("Please Enter Password");
             }
         } else {
-            Intent i = new Intent(this, MainActivity.class);
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(i);
+            String password = helper.searchPass(email);
+            if (pass.equals(password)) {
+                Intent i = new Intent(this, MainActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
+            } else {
+                Toast.makeText(Login.this, "Invalid Credentials", Toast.LENGTH_LONG).show();
+
+            }
+
         }
     }
 }

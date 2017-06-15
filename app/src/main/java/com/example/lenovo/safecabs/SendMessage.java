@@ -14,8 +14,11 @@ import android.widget.Toast;
 
 import com.katepratik.msg91api.MSG91;
 
+import org.w3c.dom.Text;
+
 
 public class SendMessage extends AppCompatActivity {
+    String text3;
     MSG91 message;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +27,12 @@ public class SendMessage extends AppCompatActivity {
         setContentView(R.layout.activity_send_message);
         Intent i = getIntent();
         String text1 = i.getStringExtra("result");
+        text3 = i.getStringExtra("add");
+
         TextView textView = (TextView) findViewById(R.id.scanresult);
         textView.setText(text1);
+        TextView textView1 = (TextView) findViewById(R.id.location);
+        textView1.setText(text3);
 
 
     }
@@ -62,7 +69,7 @@ public class SendMessage extends AppCompatActivity {
         String dest = dest1.getText().toString();
         EditText mess1 = (EditText) findViewById(R.id.message1);
         String mess = mess1.getText().toString();
-        String text2 = "Travelling From: " + source + "\r\nTravelling To: " + dest + "\r\nMessage: " + mess +  "\r\nCab Details: " + text1;
+        String text2 = "Travelling From: " + source + "\r\nTravelling To: " + dest + "\r\nMessage: " + mess +  "\r\nCab Details: " + text1 + "\r\n" + "Current Location: " + text3;
         message = new MSG91("155516AQ8nmQ5Lr8ab593929d7", true);
         String guardianNumber = guardian.getText().toString();
         message.setRoute("4");

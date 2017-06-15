@@ -9,7 +9,7 @@
     >
 
     <EditText
-        android:id="@+id/signUp_email"
+        android:id="@+id/signUp_name"
         android:layout_width="match_parent"
         android:layout_height="40dp"
 
@@ -17,18 +17,34 @@
         android:layout_marginTop="28dp"
 
         android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
+        android:hint="Name"
+        android:inputType="text"
         android:padding="10dp"
         android:textColor="#fff4fa3e"
         android:textColorHint="#fff4fa3e"
         android:background="#000000" />
 
+
+    <EditText
+        android:id="@+id/signUp_email"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+
+        android:layout_below="@+id/signUp_name"
+        android:layout_marginTop="21dp"
+
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:textColor="#fff4fa3e"
+        android:textColorHint="#fff4fa3e"
+        android:background="#ff020202" />
     <Button
         android:id="@+id/doSignUp"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/signUp_email"
+        android:layout_below="@+id/signUp_confirmpswd"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="122dp"
 
@@ -47,6 +63,21 @@
 
         android:ems="10"
         android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textColor="#fff4fa3e"
+        android:textColorHint="#fff4fa3e"
+        android:background="#ff020202" />
+    <EditText
+        android:id="@+id/signUp_confirmpswd"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+
+        android:layout_below="@+id/signUp_pswd"
+        android:layout_marginTop="21dp"
+
+        android:ems="10"
+        android:hint="Confirm Password"
         android:inputType="textPassword"
         android:padding="10dp"
         android:textColor="#fff4fa3e"
